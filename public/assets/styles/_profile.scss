@@ -1,0 +1,61 @@
+.mainProfile {
+    padding-left: 20%;
+    padding-right: 20%;
+    @media screen and (min-width: 768px) and (max-width : 992px) {  //sotto lg
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+    @media screen and (max-width : 768px) {  //sotto lg
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    p {
+        font-size: 12px;
+    }
+    .buttonGray, .deleteButtonGray, .buttonProfile, .buttonEdit {
+        border: 1px solid $gray1;
+        background-color: transparent;
+        color: $gray1;
+        letter-spacing: 2px;
+        padding: 3px 20px;
+        text-transform: uppercase;
+        font-weight: 600;
+        &:hover {
+            background-color: white;
+            color: #141414;
+        }
+    }
+    
+    .buttonProfile {
+        font-size: 12px;
+        background-color: #333333;
+        border: none;
+        color: white;
+        letter-spacing: 1px;
+        border-radius: 2px;
+    }
+    
+    .buttonEdit {
+        font-size: 12px;
+    }
+    
+    .deleteButtonGray:hover{
+        background-color: #8E0E16;
+        color: white;
+    }
+    
+    .form-check-input {
+        width: 1.5rem; 
+        height: 1.5rem; 
+        background-color: transparent; 
+        border: 1px solid #6c757d; 
+        position: relative; 
+        cursor: pointer;
+      }
+    
+      .form-check-input:checked {
+        background-color: #6c757d; 
+        border-color: #6c757d; 
+        color: #6c757d;
+      }
+}

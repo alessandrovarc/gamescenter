@@ -1,0 +1,31 @@
+.mainIndex .grigliaNet {
+  flex-wrap: nowrap;
+}
+.mainIndex .zoom-image img {
+  transition: transform 0.4s ease-in-out;
+}
+.mainIndex .zoom-image:hover img {
+  transform: scale(1.4);
+}
+
+.footerIndex {
+  padding-left: 20%;
+  padding-right: 20%;
+  margin-top: 100px;
+}
+@media screen and (max-width: 992px) {
+  .footerIndex {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+}
+.footerIndex .colorFooter, .footerIndex p {
+  color: #818181;
+}
+.footerIndex p {
+  font-size: 11px;
+  margin-bottom: 8px;
+}
+.footerIndex i {
+  font-size: 20px;
+}/*# sourceMappingURL=index.css.map */

@@ -1,0 +1,50 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    color: white;
+}
+
+$gray1 : #818181;
+
+.bg-dark1 {
+    background-color: #141414;
+}
+
+.bg-white1 {
+    background-color: #F3F3F3;
+}
+
+.color-gray {
+    color: $gray1;
+}
+
+.border-gray1 {
+    border-color: $gray1;
+}
+
+.colorProfileMiniTitle {
+    color: #C4C5BB;
+}
+
+
+
+header {
+    nav {
+        font-size: 13px;
+    }
+}
+
+
+main {
+    .dropdown {
+        button {
+            background-color: #000000;
+            font-size: 13px;
+        }
+    }
+}
+
+
+@import 'index';
+@import 'profile';
+@import 'settings';

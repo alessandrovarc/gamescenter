@@ -1,0 +1,250 @@
+.App {
+  text-align: center;
+  font-family: "Manrope", sans-serif;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+.App {
+  background-color: #221f1f;
+  overflow-x: hidden;
+}
+
+h2,
+h4,
+footer {
+  color: #f5f5f1;
+}
+
+.icons {
+  margin-left: 0.8em;
+  margin-right: 0.8em;
+  font-size: 1.2em;
+  color: #f5f5f1;
+}
+
+.navbar-nav {
+  font-size: 90%;
+}
+
+#kids {
+  color: #f5f5f1;
+  font-size: 0.8em;
+}
+
+.footer-icon {
+  color: #838383;
+}
+
+.footer-links {
+  font-size: 0.8em;
+}
+
+.footer-links p {
+  margin-bottom: 0.3em;
+  color: #838383;
+}
+
+.footer-links a {
+  color: #838383;
+  text-decoration: none;
+}
+
+.footer-button {
+  color: #838383;
+  border-color: #838383;
+}
+
+.copyright {
+  color: #838383;
+  font-size: 0.6em;
+}
+
+
+.poster-img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover; 
+  border-radius: 8px; 
+}
+
+.special-hover{
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.GallFilmCont {
+  width: 100%; 
+  background-color: #141414;
+  border-radius: 8px; 
+  position: relative;
+  transition: transform 0.2s;
+}
+
+.GallFilmCont:hover {
+  transform: scale(1.2);
+  z-index: 3;
+}
+
+.film-details {
+  background-color: #141414;
+  border-radius: 8px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+}
+
+.form-select {
+  color: #fff; /* Testo delle opzioni in bianco */
+  background-color: #343a40; /* Sfondo scuro per il selettore */
+  border: 1px solid #495057; /* Bordo scuro */
+}
+
+.form-select:focus {
+  background-color: #495057; /* Sfondo scuro quando in focus */
+  border-color: #ced4da; /* Colore del bordo quando in focus */
+  box-shadow: none; /* Rimuovere l'ombra di focus */
+}
+
+.form-select option {
+  color: #212529; /* Testo delle opzioni in colore scuro */
+  background-color: #f8f9fa; /* Sfondo chiaro per le opzioni */
+}
+
+.mainProfile {
+  padding-left: 20%;
+  padding-right: 20%;
+}
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  .mainProfile {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .mainProfile {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+}
+
+.mainProfile p {
+  font-size: 12px;
+}
+.mainProfile .buttonGray, .mainProfile .deleteButtonGray, .mainProfile .buttonProfile, .mainProfile .buttonEdit {
+  border: 1px solid #818181;
+  background-color: transparent;
+  color: #818181;
+  letter-spacing: 2px;
+  padding: 3px 20px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.mainProfile .buttonGray:hover, .mainProfile .deleteButtonGray:hover, .mainProfile .buttonProfile:hover, .mainProfile .buttonEdit:hover {
+  background-color: white;
+  color: #141414;
+}
+.mainProfile .buttonProfile {
+  font-size: 12px;
+  background-color: #333333;
+  border: none;
+  color: white;
+  letter-spacing: 1px;
+  border-radius: 2px;
+}
+.mainProfile .buttonEdit {
+  font-size: 12px;
+}
+.mainProfile .deleteButtonGray:hover {
+  background-color: #8E0E16;
+  color: white;
+}
+.mainProfile .form-check-input {
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: transparent;
+  border: 1px solid #6c757d;
+  position: relative;
+  cursor: pointer;
+}
+.mainProfile .form-check-input:checked {
+  background-color: #6c757d;
+  border-color: #6c757d;
+  color: #6c757d;
+}
+
+.mainSettings {
+  padding-left: 15%;
+  padding-right: 15%;
+  color: black;
+}
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  .mainSettings {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .mainSettings {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+}
+.mainSettings div {
+  color: black;
+}
+.mainSettings p {
+  color: black;
+}
+.mainSettings .titleSett {
+  text-transform: uppercase;
+  color: #A4A3A1;
+}
+.mainSettings button {
+  padding: 5px 30px;
+  background-color: #E3E3E3;
+  border: none;
+  font-weight: 500;
+}
+#logo {
+  font-family: "Dancing Script", cursive;
+}
+
+.horizontal-scroll-content {
+  max-width: 100%;
+  overflow-x: auto;
+}
