@@ -90,7 +90,7 @@ function Footer() {
               </div>
               <div className="row">
                 <div className="col mb-2 mt-2 copyright">
-                  © 1997-2023 Netflix, Inc.
+                  © 2024-2025 GamesCenter
                 </div>
               </div>
             </div>

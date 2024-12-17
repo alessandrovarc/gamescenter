@@ -14,8 +14,8 @@ function GallGame({
 }) {
   const navigate = useNavigate();
 
-  const handleRiproduci = (imdbID) => {
-    navigate("/detailsFilm/" + imdbID);
+  const showGameDetails = () => {
+    navigate("/detailsgame", {state: { gameId: id}});
   };
 
   return (
@@ -31,7 +31,7 @@ function GallGame({
         />
         <div className="card-info">
             <p className="text-shadow">{nome}</p>
-            <button className="cta-navigate"><ArrowForwardIosIcon fontSize="8px"/></button>
+            <button className="cta-navigate" onClick={showGameDetails}><ArrowForwardIosIcon fontSize="8px"/></button>
         </div>
       </div>
     </div>

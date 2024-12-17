@@ -1,22 +1,27 @@
-import Footer from "../components/Footer";
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useState, useEffect, useCallback } from "react";
+import { useLocation } from "react-router-dom";
 import { CircularProgress } from "@mui/material";
+import { useAuth } from "../hooks/useAuth";
 
 function DetailsGame() {
-  const { imdbID } = useParams();
-  const [detailsFilm, setDetailsFilm] = useState([]);
+  const {state} = useLocation();
+  const [gameDetails, setGameDetails] = useState(null);
   const [isLoading, setIsLoading] = useState(true); // Stato per il caricamento
-  const [isError, setIsError] = useState(false); // Stato per gli errori
-  const [errorMessage, setErrorMessage] = useState("");
+  const {accessToken} = useAuth();
 
-  useEffect(() => {
-    console.log(imdbID);
-    fetchFilm();
-  }, []);
+  const fetchGameById = useCallback(() => {
+    if(!state.gameId) return;
 
-  const fetchFilm = () => {
-    fetch("http://www.omdbapi.com/?apikey=184dbc60&i=" + imdbID)
+    setIsLoading(true);
+
+    fetch("http://localhost:3001/gioco/" + state.gameId, {
+      method: 'GET',
+      headers: {
+          'Content-Type' : 'application/json',
+          'Access-Control-Allow-Origin': '*',
+          'Authorization': `Bearer ${accessToken}`,
+      },
+  })
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -27,15 +32,18 @@ function DetailsGame() {
       .then((data) => {
         // Usa "data" per rappresentare il risultato JSON
         console.log("FILMS RECUPERATI DAL SERVER", data);
-        setDetailsFilm(data);
+        setGameDetails(data);
         setIsLoading(false);
       })
       .catch((err) => {
         console.log("ERRORE NEL RECUPERO DATI (internet)?", err);
         setIsLoading(false);
-        setIsError(true);
       });
-  };
+  },[state.gameId, accessToken]);
+
+  useEffect(() => {
+    fetchGameById();
+  }, [fetchGameById]);
 
   return (
     <>
@@ -43,41 +51,39 @@ function DetailsGame() {
         <CircularProgress color="inherit" />
       ) : (
         <>
-          <div className="row g-5 px-5">
-            <div className="col-3"></div>
-            <div className="col-9 text-start">
-              <h2>{detailsFilm.Title}</h2>
-            </div>
-          </div>
-          <div className="row g-5 px-5 mt-2">
-            <div className="col-3 text-start">
+          <div className="col-12">
+            <div className="col-6 m-auto">
               <img
-                src={detailsFilm.Poster}
-                alt={detailsFilm.Title}
-                style={{ maxWidth: "300px" }}
+                src={gameDetails?.urlImmagine}
+                alt={gameDetails?.nome}
+                style={{    
+                  width: "100%",
+                  maxHeight: "60vh",
+                  objectFit: "cover",
+                  borderRadius: "8px",
+                  margin: "20px auto"
+                }}
               />
             </div>
-            <div className="col-9 text-start">
-              <p>
-                <b>Anno:</b> {detailsFilm.Year}
-              </p>
-              <p>
-                <b>Genere:</b> {detailsFilm.Genre}
-              </p>
-              <p>
-                <b>Regista:</b> {detailsFilm.Director}
-              </p>
-              <p>
-                <b>Attori:</b> {detailsFilm.Actors}
-              </p>
-              <p>
-                <b>Trama:</b> {detailsFilm.Plot}
-              </p>
+            <div className="col-10 m-auto">
+              <h2 className="m-2">{gameDetails?.nome}</h2>
+              <div className="">
+                <div className="col-12 text-start">
+                  <p>
+                    <b>Genere:</b> {gameDetails?.genere}
+                  </p>
+                  <p>
+                    <b>Piattaforma:</b> {gameDetails?.piattaforma}
+                  </p>
+                  <p>
+                    <b>Descrizione:</b> {gameDetails?.descrizione}
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </>
       )}
-      <Footer />
     </>
   );
 }

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Registration() {
   const [formData, setFormData] = useState({
@@ -7,11 +8,47 @@ function Registration() {
     email: "",
     password: "",
     username: ""
-  })
+  });
+
+  const navigate = useNavigate();
 
   const handleFormDataChange = (key, value) => {
     setFormData(prev =>({...prev, [key]: value}));
   } 
+
+  const handleRegistration = async (e) => {
+    e.preventDefault();
+    try {
+        const response = await fetch ('http://localhost:3001/auth/register',{
+            method: 'POST',
+            headers: {
+                'Content-Type' : 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            },
+            body: JSON.stringify({
+                "username": formData.username,
+                "nome": formData.name,
+                "cognome": formData.surname,
+                "email": formData.email,
+                "password": formData.password,
+            }),
+            
+        });
+        console.log('Dati ricevuti:', response);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+  
+            const data = await response.json(); 
+            navigate("/", { state: {
+              email: data.email,
+              password: formData.password
+            }});
+
+    }catch (error) {
+        console.error('Errore durante la fetch:', error);
+      }
+}
 
   return (
     <>
@@ -20,7 +57,7 @@ function Registration() {
           <div>
             <h1 className="mb-0">Registrazione</h1>
             <div class="col col-sm-6 m-auto">
-                <form>
+                <form  onSubmit={handleRegistration}>
                     <hr className="mt-3" />
                     <div class="mb-3 text-start">
                         <label for="input-name" class="form-label">Nome</label>

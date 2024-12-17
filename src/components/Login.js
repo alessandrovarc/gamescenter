@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Button, Link, Modal, TextField, Typography } from "@mui/material";
+import { useAuth } from "../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
-const style = {
+const withModalstyle = {
     all: "unset",
     position: 'absolute',
     top: '65px',
@@ -17,12 +19,27 @@ const style = {
     gap: "1rem",
     boxSizing: "border-box"
   };
+const withoutModalstyle = {
+    all: "unset",
+    position: 'relative',
+    width: 330,
+    borderRadius: 2,
+    boxShadow: 24,
+    p: 4,
+    display: "flex",
+    justifyContent: "center",
+    flexDirection: "column",
+    gap: "1rem",
+    boxSizing: "border-box",
+    margin: "auto"
+  };
   
-const Login = () => {
+const Login = ({withModal = true, emailFromRegistration, passwordFromRegistration}) => {
     const [open, setOpen] = useState(false);
-    const [email, setEmail] = useState("");
-    const [password,setPassword] = useState("");
-    const [storedValue, setStoredValue] = useState(localStorage.getItem('accessToken') || '');
+    const [email, setEmail] = useState(emailFromRegistration || "");
+    const [password,setPassword] = useState(passwordFromRegistration || "");
+    const {isLogged} = useAuth();
+    const navigate = useNavigate("/");
 
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -30,7 +47,9 @@ const Login = () => {
     const handleLogout = () => {
         localStorage.setItem("accessToken", "");
         window.dispatchEvent(new Event("storage"));
-        setStoredValue("");
+        window.history.replaceState({}, '');
+        navigate("/");
+        handleClose();
     }
 
      const fetchLogin = async () => {
@@ -57,7 +76,6 @@ const Login = () => {
                 console.log('Dati ricevuti:', data);
                 localStorage.setItem("accessToken", data.accessToken);
                 window.dispatchEvent(new Event("storage"));
-                setStoredValue(data.accessToken); // Aggiorna lo stato
 
         }catch (error) {
             console.error('Errore durante la fetch:', error);
@@ -66,7 +84,7 @@ const Login = () => {
 
 
 
-    return (
+    return  withModal ? (
         <>
         <i className="bi bi-person-circle icons" onClick={handleOpen}></i>
         <Modal
@@ -75,8 +93,8 @@ const Login = () => {
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
           >
-            <Box sx={style}>
-                { !storedValue ? //non sono loggato? 
+            <Box sx={withModalstyle}>
+                { !isLogged ? //non sono loggato? 
                     <>
                         <TextField
                             id="outlined-email"
@@ -101,7 +119,7 @@ const Login = () => {
                     :
                     <>
                         <Typography variant="">
-                            Ciao, Utente1223
+                            Ciao, Alessandro
                         </Typography>
                         <Button variant="contained">Impostazioni</Button>
                         <Button variant="contained" onClick={handleLogout}>Esci</Button>
@@ -110,6 +128,31 @@ const Login = () => {
             </Box>
         </Modal>
         </>
+    ) : (
+        <div className="m-auto">
+            <h5>Accedi per scoprire migliaia di giochi!</h5>
+            <Box sx={withoutModalstyle}>
+                <TextField
+                    id="outlined-email"
+                    label="Email"
+                    value={email}
+                    onChange={(event) => setEmail(event.target.value)}
+                    placeholder="example@mail.com"
+                />
+                <TextField
+                    id="outlined-password-input"
+                    label="Password"
+                    type="password"
+                    value={password}
+                    autoComplete="current-password"
+                    onChange={(event) => setPassword(event.target.value)}
+                />
+                <Button variant="contained" onClick={fetchLogin}>Accedi</Button>
+                <Link href="/registration" underline="hover" variant="caption">
+                    Non sei registrato? Clicca qui per registrarti
+                </Link>
+            </ Box>
+        </div>
     )
 }
 
