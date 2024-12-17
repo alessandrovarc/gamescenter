@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Login from "./Login";
+import Logo from "../assets/images/logo.png";
 
 function NavBar() {
-  const location = useLocation();
+  const navigate = useNavigate();
+
   return (
     <>
       <nav
@@ -12,11 +13,9 @@ function NavBar() {
         style={{ backgroundColor: "#221f1f" }}
       >
         <div className="container-fluid">
-          <Link className="navbar-brand" to="/">
-            <div>
-              GC
-            </div>
-          </Link>
+          <div className="">
+            <image src={Logo} />
+          </div>
           <button
             className="navbar-toggler"
             type="button"
@@ -37,9 +36,7 @@ function NavBar() {
               </li>
             </ul>
             <div className="d-flex align-items-center">
-              <Link className="navbar-brand" to="/search">
-                <i className="bi bi-search icons"></i>
-              </Link>
+              <i className="bi bi-search icons" color="white" onClick={() => navigate("/search")}></i>
               <Login />
             </div>
           </div>

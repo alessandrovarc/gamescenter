@@ -1,0 +1,10 @@
+.main-home-wrapper {
+    position: relative;
+    padding: 20px;
+}
+
+.main-home-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

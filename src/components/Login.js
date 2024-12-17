@@ -2,18 +2,20 @@ import React, { useState } from "react";
 import { Box, Button, Link, Modal, TextField, Typography } from "@mui/material";
 
 const style = {
+    all: "unset",
     position: 'absolute',
     top: '65px',
     right: '20px',
     width: 350,
     bgcolor: 'background.paper',
-    border: '2px solid #000',
+    borderRadius: 2,
     boxShadow: 24,
     p: 4,
     display: "flex",
     justifyContent: "center",
     flexDirection: "column",
-    gap: "1rem"
+    gap: "1rem",
+    boxSizing: "border-box"
   };
   
 const Login = () => {

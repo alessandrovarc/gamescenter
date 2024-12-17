@@ -3,21 +3,21 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import  'bootstrap/dist/css/bootstrap.min.css' ; 
-import { ThemeProvider, createTheme } from '@mui/material/styles'; 
+import  'bootstrap/dist/css/bootstrap.min.css' ;
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
 
 const darkTheme = createTheme({
   palette: {
-    mode: 'dark',
-    primary: {
-      main: '#e50914',
-    },
-    secondary: {
-      main: '#333',
-    },
+    // mode: 'dark',
+    // primary: {
+    //   main: '#32a852',
+    // },
+    // secondary: {
+    //   main: '#000',
+    // },
     background: {
-      default: "#221f1f",
+      default: "#fff",
     }
   },
 });

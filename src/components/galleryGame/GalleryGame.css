@@ -1,0 +1,68 @@
+.game-wrapper {
+    position: relative;
+    max-width: 350px;
+    min-width: 350px;
+    height: 280px;
+    overflow: visible;
+}
+.game-wrapper:hover .game-hovered-container{
+    transform: scale(1.15);
+    z-index: 1;
+}
+.game-hovered-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: all 0.4s ease-out;
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 0;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;    
+}
+.card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-info {
+    position: absolute;
+    padding: 10px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.2);
+    color: #fff;
+    opacity: 0;
+    transition: all 0.4s ease-out;
+}
+
+.game-wrapper:hover .card-info {
+    opacity: 1;
+}
+
+.cta-navigate {
+    all: unset;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: white;
+    color: black;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease-out;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;  
+}
+
+.cta-navigate:hover {
+    transform: scale(1.1);
+}
+
+.text-shadow {
+    text-shadow: 2px 2px 5px black;
+}

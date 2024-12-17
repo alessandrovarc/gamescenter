@@ -1,0 +1,21 @@
+.navbar-wrapper {
+    position: relative;
+    background: black;
+    display: flex;
+    justify-content: space-between;
+    max-height: 80px;
+}
+
+.logo-img {
+    object-fit: contain;
+    width: 200px;
+    height: 140px;
+    top: -25px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.4s ease-out;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+}

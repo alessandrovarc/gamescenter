@@ -1,11 +1,11 @@
 import "./App.css";
 import HomePage from "./pages/HomePage";
 import Settings from "./pages/Settings";
-import Search from "./pages/Search";
 import Error from "./pages/Error";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import NavBar from "./components/NavBar";
 import Registration from "./pages/Registrazione";
+import BackgroundVideo from "../src/assets/video/SimpleAbstract.mp4";
+import NavBar from "./components/navBar/NavBar";
 
 //extra extra ho creato la pagina search dei film
 //extra extra hover riproduci con i dettagli del film
@@ -18,12 +18,11 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/settings" element={<Settings />} />
-          <Route path="/search" element={<Search />} />
           <Route path="/registration" element={<Registration />} />
-          {/**Questa non è completata */}
           <Route path="*" element={<Error />} />
         </Routes>
       </Router>
+      <video src={BackgroundVideo} className="video-backgorund" autoPlay loop type="video/mp4"/>
     </div>
   );
 }
