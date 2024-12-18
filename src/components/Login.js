@@ -86,7 +86,11 @@ const Login = ({withModal = true, emailFromRegistration, passwordFromRegistratio
 
     return  withModal ? (
         <>
-        <i className="bi bi-person-circle icons" onClick={handleOpen}></i>
+        {isLogged ?
+            <i className="bi bi-box-arrow-left icons" onClick={handleLogout}></i>
+            :
+            <i className="bi bi-person-circle icons" onClick={handleOpen}></i>
+        }
         <Modal
           open={open}
           onClose={handleClose}
@@ -94,37 +98,25 @@ const Login = ({withModal = true, emailFromRegistration, passwordFromRegistratio
           aria-describedby="modal-modal-description"
           >
             <Box sx={withModalstyle}>
-                { !isLogged ? //non sono loggato? 
-                    <>
-                        <TextField
-                            id="outlined-email"
-                            label="Email"
-                            value={email}
-                            onChange={(event) => setEmail(event.target.value)}
-                            placeholder="example@mail.com"
-                        />
-                        <TextField
-                            id="outlined-password-input"
-                            label="Password"
-                            type="password"
-                            value={password}
-                            autoComplete="current-password"
-                            onChange={(event) => setPassword(event.target.value)}
-                        />
-                        <Button variant="contained" onClick={fetchLogin}>Accedi</Button>
-                        <Link href="/registration" underline="hover" variant="caption">
-                            Non sei registrato? Clicca qui per registrarti
-                        </Link>
-                    </>
-                    :
-                    <>
-                        <Typography variant="">
-                            Ciao, Alessandro
-                        </Typography>
-                        <Button variant="contained">Impostazioni</Button>
-                        <Button variant="contained" onClick={handleLogout}>Esci</Button>
-                    </>
-            }
+                <TextField
+                    id="outlined-email"
+                    label="Email"
+                    value={email}
+                    onChange={(event) => setEmail(event.target.value)}
+                    placeholder="example@mail.com"
+                />
+                <TextField
+                    id="outlined-password-input"
+                    label="Password"
+                    type="password"
+                    value={password}
+                    autoComplete="current-password"
+                    onChange={(event) => setPassword(event.target.value)}
+                />
+                <Button variant="contained" onClick={fetchLogin}>Accedi</Button>
+                <Link href="/registration" underline="hover" variant="caption">
+                    Non sei registrato? Clicca qui per registrarti
+                </Link>
             </Box>
         </Modal>
         </>
